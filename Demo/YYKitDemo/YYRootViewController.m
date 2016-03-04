@@ -46,7 +46,7 @@
 }
 
 - (void)addCell:(NSString *)title class:(NSString *)className {
-    [self.titles addObject:title];
+    [self.titles     addObject:title];
     [self.classNames addObject:className];
 }
 

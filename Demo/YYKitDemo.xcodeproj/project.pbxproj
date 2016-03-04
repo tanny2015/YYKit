@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20C9332D1C89355800D79325 /* temp.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C9332C1C89355800D79325 /* temp.m */; };
+		20C933311C8950AC00D79325 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20C933301C8950AC00D79325 /* CFNetwork.framework */; };
 		ABDC320D1BEAFB870012A159 /* YYTextTagExample.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDC320C1BEAFB870012A159 /* YYTextTagExample.m */; };
 		D9067DF11B975D3900F346EB /* YYTextExampleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D9067DF01B975D3900F346EB /* YYTextExampleHelper.m */; };
 		D9067DF41B9813B500F346EB /* YYTextEditExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D9067DF31B9813B500F346EB /* YYTextEditExample.m */; };
@@ -196,6 +198,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20C9332C1C89355800D79325 /* temp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = temp.m; sourceTree = "<group>"; };
+		20C933301C8950AC00D79325 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		ABDC320B1BEAFB870012A159 /* YYTextTagExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYTextTagExample.h; sourceTree = "<group>"; };
 		ABDC320C1BEAFB870012A159 /* YYTextTagExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYTextTagExample.m; sourceTree = "<group>"; };
 		D9067DEF1B975D3900F346EB /* YYTextExampleHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYTextExampleHelper.h; sourceTree = "<group>"; };
@@ -520,6 +524,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20C933311C8950AC00D79325 /* CFNetwork.framework in Frameworks */,
 				D9B25F9E1BEE79280038C00A /* WebP.framework in Frameworks */,
 				D9B25F9D1BEE79280038C00A /* bpg.framework in Frameworks */,
 				D9700D9E1BC7D44B00F878A4 /* libsqlite3.tbd in Frameworks */,
@@ -822,6 +827,7 @@
 		D974852319CAB3AE00F46DE1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				20C933301C8950AC00D79325 /* CFNetwork.framework */,
 				D9B25F9B1BEE79280038C00A /* bpg.framework */,
 				D9B25F9C1BEE79280038C00A /* WebP.framework */,
 				D9700D9D1BC7D44B00F878A4 /* libsqlite3.tbd */,
@@ -857,6 +863,7 @@
 		D9B25F9F1BEE79370038C00A /* YYKit */ = {
 			isa = PBXGroup;
 			children = (
+				20C9332C1C89355800D79325 /* temp.m */,
 				D9B2604F1BEE79370038C00A /* YYKit.h */,
 				D9B25FA01BEE79370038C00A /* Base */,
 				D9B260061BEE79370038C00A /* Model */,
@@ -1255,6 +1262,7 @@
 				D9B2609C1BEE79370038C00A /* YYThreadSafeArray.m in Sources */,
 				D9B260671BEE79370038C00A /* UIGestureRecognizer+YYAdd.m in Sources */,
 				D9B260681BEE79370038C00A /* UIImage+YYAdd.m in Sources */,
+				20C9332D1C89355800D79325 /* temp.m in Sources */,
 				D9067DF11B975D3900F346EB /* YYTextExampleHelper.m in Sources */,
 				D9971BB01B84D55A00A7B424 /* YYTextAttributeExample.m in Sources */,
 				D9B260A01BEE79370038C00A /* YYWeakProxy.m in Sources */,
@@ -1395,6 +1403,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1414,6 +1423,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-ObjC",
+				);
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1438,6 +1451,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1449,6 +1463,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-ObjC",
+				);
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1462,7 +1480,7 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/**",
@@ -1474,13 +1492,16 @@
 					"$(PROJECT_DIR)/**",
 				);
 				INFOPLIST_FILE = YYKitDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/**",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lz",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ibireme.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = YYKitDemo;
 				PROVISIONING_PROFILE = "";
@@ -1495,7 +1516,7 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/**",
@@ -1506,13 +1527,16 @@
 					"$(PROJECT_DIR)/**",
 				);
 				INFOPLIST_FILE = YYKitDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/**",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lz",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ibireme.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = YYKitDemo;
 				PROVISIONING_PROFILE = "";

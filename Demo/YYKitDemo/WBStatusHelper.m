@@ -193,6 +193,10 @@
 + (NSRegularExpression *)regexTopic {
     static NSRegularExpression *regex;
     static dispatch_once_t onceToken;
+    //[aeiou]就匹配任何 '一个' 英文元音字母，[.?!]匹配标点符号(.或?或!)
+    //[^x]	匹配除了x以外的任意字符;   [^aeiou]	匹配除了aeiou这几个字母以外的任意字符
+    //\d+匹配1个或更多连续的数字。这里的+是和*类似的元字符，不同的是*匹配重复任意次(可能是0次)，而+则匹配重复1次或更多次
+    //?重复零次或一次    +重复一次或更多次 [重复的内容是在这俩个符号前面的东西]
     dispatch_once(&onceToken, ^{
         regex = [NSRegularExpression regularExpressionWithPattern:@"#[^@#]+?#" options:kNilOptions error:NULL];
     });

@@ -45,6 +45,7 @@
     YYPhotoGroupItem *item = [self.class new];
     return item;
 }
+
 @end
 
 

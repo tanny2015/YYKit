@@ -593,6 +593,7 @@ return style. _attr_;
     if (!image || fontSize <= 0) return nil;
     
     BOOL hasAnim = NO;
+    //大概是一个gif动画图中有很多帧的图案拼凑起来的
     if (image.images.count > 1) {
         hasAnim = YES;
     } else if ([image conformsToProtocol:@protocol(YYAnimatedImage)]) {

@@ -361,6 +361,7 @@ static force_inline id YYValueForMultiKeys(__unsafe_unretained NSDictionary *dic
             meta->_getter = propertyInfo.getter;
         }
     }
+    
     if (propertyInfo.setter) {
         if ([classInfo.cls instancesRespondToSelector:propertyInfo.setter]) {
             meta->_setter = propertyInfo.setter;
@@ -576,6 +577,10 @@ static force_inline id YYValueForMultiKeys(__unsafe_unretained NSDictionary *dic
         lock = dispatch_semaphore_create(1);
     });
     dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
+    /*
+     meta是用来在HTML文档中模拟HTTP协议的响应头报文。 meta 标签用于网页的 与中，meta 标签的用处很多。 meta 的属性有两种：name和http-equiv 。 name属性主要用于描述网页，对应于content（网页内容），以便于搜索引擎机器人查找、分类（目前几乎所有的搜索引擎都使用网上机器人自动查找meta值来给网页分类）
+     */
+    
     _YYModelMeta *meta = CFDictionaryGetValue(cache, (__bridge const void *)(cls));
     dispatch_semaphore_signal(lock);
     if (!meta || meta->_classInfo.needUpdate) {

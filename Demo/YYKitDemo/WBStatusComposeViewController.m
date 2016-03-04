@@ -17,6 +17,7 @@
 
 @interface WBStatusComposeViewController() <YYTextViewDelegate, YYTextKeyboardObserver, WBStatusComposeEmoticonViewDelegate>
 
+//这边用到了YYTextView
 @property (nonatomic, strong) YYTextView *textView;
 
 @property (nonatomic, strong) UIView *toolbar;

@@ -310,7 +310,7 @@ typedef NS_ENUM(NSUInteger, WBPictureBadgeType) {
 @property (nonatomic, strong) NSString *maxID;
 @property (nonatomic, strong) NSString *previousCursor;
 @property (nonatomic, strong) NSString *nextCursor;
-@property (nonatomic, strong) NSArray<WBStatus *> *statuses;
+@property (nonatomic, strong) NSArray<WBStatus *> *statuses;//WBStatus是切实的内容数据
 /*
  groupInfo
  trends

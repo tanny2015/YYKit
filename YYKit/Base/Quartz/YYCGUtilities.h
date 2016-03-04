@@ -172,13 +172,14 @@ static inline CGFloat CGFloatFromPixel(CGFloat value) {
 }
 
 
-
+/*     floor() -- 返回比参数小的最大整数    */
 /// floor point value for pixel-aligned
 static inline CGFloat CGFloatPixelFloor(CGFloat value) {
     CGFloat scale = YYScreenScale();
     return floor(value * scale) / scale;
 }
 
+/*  round() -- 返回按指定位数进行四舍五入的数值。 */
 /// round point value for pixel-aligned
 static inline CGFloat CGFloatPixelRound(CGFloat value) {
     CGFloat scale = YYScreenScale();

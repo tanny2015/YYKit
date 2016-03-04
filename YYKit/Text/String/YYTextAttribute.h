@@ -164,6 +164,7 @@ UIKIT_EXTERN NSString *const YYTextTruncationToken; ///< Horizontal ellipsis (U+
 typedef void(^YYTextAction)(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect);
 
 
+
 /**
  YYTextBackedString objects are used by the NSAttributedString class cluster
  as the values for text backed string attributes (stored in the attributed 
@@ -172,6 +173,7 @@ typedef void(^YYTextAction)(UIView *containerView, NSAttributedString *text, NSR
  It may used for copy/paste plain text from attributed string.
  Example: If :) is replace by a custom emoji (such as😊), the backed string can be set to @":)".
  */
+//emoji图片背后真实的文字形式表现
 @interface YYTextBackedString : NSObject <NSCoding, NSCopying>
 + (instancetype)stringWithString:(nullable NSString *)string;
 @property (nullable, nonatomic, copy) NSString *string; ///< backed string

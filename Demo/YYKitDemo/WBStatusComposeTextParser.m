@@ -29,6 +29,7 @@
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
             topicExts = @[ @"[电影]#", @"[图书]#", @"[音乐]#", @"[地点]#", @"[股票]#" ];
+            //这些图片是在输入的时候，点击键盘上方的#键会随机出现的字符串前边的图片
             topicExtImages = @[
                 [WBStatusHelper imageNamed:@"timeline_card_small_movie"],
                 [WBStatusHelper imageNamed:@"timeline_card_small_book"],
@@ -38,8 +39,13 @@
             ];
         });
         
+        //regexTopic正则表达式规则
+        /*ios从4.0开始支持正则表达式。具体涉及到的类是：
+         NSRegularExpression
+         NSTextCheckingResult*/
         NSArray<NSTextCheckingResult *> *topicResults = [[WBStatusHelper regexTopic] matchesInString:text.string options:kNilOptions range:text.rangeOfAll];
         NSUInteger clipLength = 0;
+        //匹配后返回的一些满足条件的例子的数组
         for (NSTextCheckingResult *topic in topicResults) {
             if (topic.range.location == NSNotFound && topic.range.length <= 1) continue;
             NSRange range = topic.range;
@@ -105,8 +111,6 @@
                 }
             }];
             if (containsBindingRange) continue;
-            
-            
             [text setColor:_highlightTextColor range:at.range];
         }
     }
@@ -133,7 +137,7 @@
             }];
             if (containsBindingRange) continue;
             
-            
+            //提取代表了图片的那些文字内容  :) 😊
             YYTextBackedString *backed = [YYTextBackedString stringWithString:emoString];
             NSMutableAttributedString *emoText = [NSAttributedString attachmentStringWithEmojiImage:image fontSize:_font.pointSize].mutableCopy;
             // original text, used for text copy
@@ -194,20 +198,20 @@
     //    CGRect bounding = YYEmojiGetGlyphBoundingRectWithFontSize(fontSize);
     
     // Heiti SC 字体。。
-    CGFloat ascent = fontSize * 0.86;
-    CGFloat descent = fontSize * 0.14;
-    CGRect bounding = CGRectMake(0, -0.14 * fontSize, fontSize, fontSize);
+    CGFloat ascent   = fontSize * 0.86;
+    CGFloat descent  = fontSize * 0.14;
+    CGRect  bounding = CGRectMake(0, -0.14 * fontSize, fontSize, fontSize);
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(ascent - (bounding.size.height + bounding.origin.y), 0, descent + bounding.origin.y, 0);
     
     YYTextRunDelegate *delegate = [YYTextRunDelegate new];
-    delegate.ascent = ascent;
+    delegate.ascent  = ascent;
     delegate.descent = descent;
-    delegate.width = bounding.size.width;
+    delegate.width   = bounding.size.width;
     
     YYTextAttachment *attachment = [YYTextAttachment new];
-    attachment.contentMode = UIViewContentModeScaleAspectFit;
-    attachment.contentInsets = contentInsets;
-    attachment.content = image;
+    attachment.contentMode       = UIViewContentModeScaleAspectFit;
+    attachment.contentInsets     = contentInsets;
+    attachment.content           = image;
     
     if (shrink) {
         // 缩小~

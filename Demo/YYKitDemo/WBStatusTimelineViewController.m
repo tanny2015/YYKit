@@ -28,8 +28,9 @@
 
 - (instancetype)init {
     self = [super init];
+    //YYTableView 内部处理了touch捕捉【取消了一部分点触响应事件】
     _tableView = [YYTableView new];
-    _tableView.delegate = self;
+    _tableView.delegate   = self;
     _tableView.dataSource = self;
     _layouts = [NSMutableArray new];
     return self;
@@ -41,6 +42,7 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     
+    //导航栏右侧  -- 写文字【这边接入富文本编辑器】
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithImage:[WBStatusHelper imageNamed:@"toolbar_compose_highlighted"] style:UIBarButtonItemStylePlain target:self action:@selector(sendStatus)];
     rightItem.tintColor = UIColorHex(fd8224);
     self.navigationItem.rightBarButtonItem = rightItem;
@@ -68,6 +70,7 @@
     
     
     self.navigationController.view.userInteractionEnabled = NO;
+    //UIActivityIndicatorView 这是蒙盖上的一个小菊花 【矩形框 + 一个闪动菊花】
     UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     indicator.size = CGSizeMake(80, 80);
     indicator.center = CGPointMake(self.view.width / 2, self.view.height / 2);
@@ -81,6 +84,7 @@
         for (int i = 0; i <= 7; i++) {
             NSData *data = [NSData dataNamed:[NSString stringWithFormat:@"weibo_%d.json",i]];
             WBTimelineItem *item = [WBTimelineItem modelWithJSON:data];
+            //WBStatus位于WBTimelineItem中，他是切实的内容数据【是个数组】
             for (WBStatus *status in item.statuses) {
                 WBStatusLayout *layout = [[WBStatusLayout alloc] initWithStatus:status style:WBLayoutStyleTimeline];
 //                [layout layout];
@@ -89,10 +93,11 @@
         }
         
         // 复制一下，让列表长一些，不至于滑两下就到底了
-        [_layouts addObjectsFromArray:_layouts];
+        //[_layouts addObjectsFromArray:_layouts];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             self.title = [NSString stringWithFormat:@"Weibo (loaded:%d)", (int)_layouts.count];
+            //加载完数据，把菊花移除（这边是从本地直接去加载已经下载好的写死的json数据）
             [indicator removeFromSuperview];
             self.navigationController.view.userInteractionEnabled = YES;
             [_tableView reloadData];
@@ -100,6 +105,12 @@
     });
 }
 
+
+/*
+ WBStatusComposeViewTypeStatus,  ///< 发微博【//发状态】
+ WBStatusComposeViewTypeRetweet, ///< 转发微博
+ WBStatusComposeViewTypeComment, ///< 发评论
+ */
 - (void)sendStatus {
     WBStatusComposeViewController *vc = [WBStatusComposeViewController new];
     vc.type = WBStatusComposeViewTypeStatus;
@@ -111,6 +122,8 @@
     };
     [self presentViewController:nav animated:YES completion:NULL];
 }
+
+
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     if (_fpsLabel.alpha == 0) {

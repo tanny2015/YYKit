@@ -632,6 +632,7 @@ static const short base64DecodingTable[256] = {
     return [NSData dataWithData:compressed];
 }
 
+//把本地的数据写入到NSData中去
 + (NSData *)dataNamed:(NSString *)name {
     NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@""];
     if (!path) return nil;
